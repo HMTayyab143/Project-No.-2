@@ -4,6 +4,7 @@ using System.Text;
 using System.Collections.ObjectModel;
 
 using Xamarin.Forms;
+using BetterNotes.Views;
 
 namespace BetterNotes.ViewModels
 {
@@ -36,6 +37,8 @@ namespace BetterNotes.ViewModels
             CreateNote = new Command(() =>
             {
                 //Push a page to create a new note
+                //Invoke the main thread to push a page for adding a note
+                Device.BeginInvokeOnMainThread(async () => await Navigation.PushAsync(new AddNotePage()));
             });
 
         }
