@@ -6,6 +6,16 @@
              mc:Ignorable="d"
              xmlns:font="clr-namespace:FontAwesome"
              x:Class="BetterNotes.Views.MainPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding CreateNote}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource Glyph="{x:Static font:FontAwesomeIcons.PlusCircle}"
+                                 FontFamily="{x:StaticResource FontAwesomeSolid}"
+                                 Color="White"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
         <StackLayout Padding="20">
             <CollectionView>
