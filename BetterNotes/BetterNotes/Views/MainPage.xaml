@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:font="clr-namespace:FontAwesome"
+             x:Class="BetterNotes.Views.MainPage">
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <CollectionView>
+                <d:CollectionView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Test</x:String>
+                        <x:String>Test</x:String>
+                        <x:String>Test</x:String>
+                        <x:String>Test</x:String>
+                        <x:String>Test</x:String>
+                    </x:Array>
+                </d:CollectionView.ItemsSource>
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"
+                                       ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame CornerRadius="20"
+                               BorderColor="LightGray"
+                               HeightRequest="100"
+                               Padding="15,10">
+                            <Grid RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.3*"/>
+                                    <RowDefinition Height="0.7*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.25*"/>
+                                    <ColumnDefinition Width="0.75*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label d:Text="{Binding .}"
+                                       FontSize="Large"
+                                       VerticalTextAlignment="End"
+                                       Grid.Column="1"
+                                       FontAttributes="Bold"
+                                       Text="{Binding Name}"/>
+                                <Label d:Text="Description of a note: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
+                                       Grid.Column="1"
+                                       VerticalTextAlignment="Start"
+                                       Grid.Row="1"
+                                       />
+                                <Image Grid.RowSpan="2"
+                                       Opacity="0.2"
+                                       Grid.Column="0">
+                                    <Image.Source>
+                                        <FontImageSource Glyph="{x:Static font:FontAwesomeIcons.StickyNote}"
+                                                         
+                                                         FontFamily="{x:StaticResource FontAwesomeSolid}"
+                                                         Color="Gray"/>
+                                    </Image.Source>
+                                </Image>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
