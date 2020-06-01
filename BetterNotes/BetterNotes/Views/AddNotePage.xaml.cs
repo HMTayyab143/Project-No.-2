@@ -42,6 +42,7 @@ namespace BetterNotes.Views
                     });
             };
             addtext.TextChanged += Addtext_TextChanged;
+            addtext.Focus();
             MainContent.Children.Add(addtext);
         }
 
