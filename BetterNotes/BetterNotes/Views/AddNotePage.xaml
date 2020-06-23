@@ -16,17 +16,16 @@
             <Grid Padding="20"
                   VerticalOptions="EndAndExpand">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.25*"/>
-                    <ColumnDefinition Width="0.25*"/>
-                    <ColumnDefinition Width="0.25*"/>
-                    <ColumnDefinition Width="0.25*"/>
+                    <ColumnDefinition Width="0.33*"/>
+                    <ColumnDefinition Width="0.33*"/>
+                    <ColumnDefinition Width="0.33*"/>
                 </Grid.ColumnDefinitions>
                 <Image>
                     <Image.Source>
                         <FontImageSource Glyph="{x:Static font:FontAwesomeIcons.FileAlt}"
                                          FontFamily="{x:StaticResource FontAwesomeSolid}"
                                          Color="Blue"
-                                         Size="Large"/>
+                                         Size="20"/>
                     </Image.Source>
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="AddTextBlock"/>
@@ -38,7 +37,7 @@
                         <FontImageSource Glyph="{x:Static font:FontAwesomeIcons.Microphone}"
                                          FontFamily="{x:StaticResource FontAwesomeSolid}"
                                          Color="Blue"
-                                         Size="Large"/>
+                                         Size="20"/>
                     </Image.Source>
                     <Image.GestureRecognizers>
 
@@ -50,24 +49,13 @@
                         <FontImageSource Glyph="{x:Static font:FontAwesomeIcons.PhotoVideo}"
                                          FontFamily="{x:StaticResource FontAwesomeSolid}"
                                          Color="Blue"
-                                         Size="Large"/>
+                                         Size="20"/>
                     </Image.Source>
                     <Image.GestureRecognizers>
-
+                        <TapGestureRecognizer Tapped="AddPhoto"/>
                     </Image.GestureRecognizers>
                 </Image>
 
-                <Image Grid.Column="3">
-                    <Image.Source>
-                        <FontImageSource Glyph="{x:Static font:FontAwesomeIcons.Link}"
-                                         FontFamily="{x:StaticResource FontAwesomeSolid}"
-                                         Color="Blue"
-                                         Size="Large"/>
-                    </Image.Source>
-                    <Image.GestureRecognizers>
-
-                    </Image.GestureRecognizers>
-                </Image>
             </Grid>
         </StackLayout>
     </ContentPage.Content>
