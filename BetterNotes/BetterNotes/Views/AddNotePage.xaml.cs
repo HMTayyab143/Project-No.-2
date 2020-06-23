@@ -8,6 +8,15 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using BetterNotes.Utils;
+using BetterNotes.CustomControls;
+
+using Plugin.Media.Abstractions;
+using Plugin.Media;
+
+using Plugin.Permissions.Abstractions;
+using Plugin.Permissions;
+
+using BetterNotes.Converters;
 
 namespace BetterNotes.Views
 {
@@ -27,7 +36,10 @@ namespace BetterNotes.Views
 
         private void AddTextBlock(object sender, EventArgs args)
         {
-            var addtext = new Editor();
+            var addtext = new CustomEditor();
+            addtext.CornerRadii = new int[] { 30, 30, 30, 30 };
+            addtext.BackGroundColor = Color.Gray;
+            addtext.EndColor = Color.White;
             addtext.HeightRequest = 250;
             addtext.Unfocused += (s, e) =>
             {
@@ -36,14 +48,14 @@ namespace BetterNotes.Views
                 if (!string.IsNullOrEmpty(LabelText))
                     MainContent.Children.Add(new Label()
                     {
-                        Text = LabelText,
+                        FormattedText = (new GroupDescriptionConverter()).Convert(LabelText, typeof(FormattedString)) as FormattedString,
                         TextColor = Color.Black,
                         FontSize = 20
-                    });
+                    }) ;
             };
             addtext.TextChanged += Addtext_TextChanged;
-            addtext.Focus();
             MainContent.Children.Add(addtext);
+            Device.BeginInvokeOnMainThread(() => addtext.Focus());
         }
 
         private void Addtext_TextChanged(object sender, TextChangedEventArgs e)
@@ -74,5 +86,38 @@ namespace BetterNotes.Views
             }
            
         }
+
+        private void AddLinkBlock(object sender, EventArgs args)
+        {
+            
+        }
+
+        private async void AddPhoto(object sender, EventArgs args)
+        {
+            var permission_result = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
+            if (permission_result != PermissionStatus.Granted)
+            {
+                await CrossPermissions.Current.RequestPermissionsAsync(Permission.Camera);
+            }
+            var photo = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+            {
+                PhotoSize = PhotoSize.Medium,
+                AllowCropping = true
+            });
+
+            if (photo != null)
+            {
+                MainContent.Children.Add(new Image
+                {
+                    HorizontalOptions = LayoutOptions.Center,
+                    Source = ImageSource.FromStream(() =>
+                    {
+                        var stream = photo.GetStream();
+                        return stream;
+                    })
+                });
+            }
+        }
+
     }
 }
