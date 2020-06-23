@@ -15,6 +15,22 @@
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
+
+    <NavigationPage.TitleView>
+        <Label Text="Better Notes"
+               VerticalOptions="FillAndExpand"
+               HorizontalOptions="FillAndExpand"
+               HorizontalTextAlignment="Center"
+               TextColor="White"
+               FontAttributes="Bold"
+               FontSize="Large"
+               VerticalTextAlignment="Center"/>
+    </NavigationPage.TitleView>
+
+    <NavigationPage.TitleIconImageSource>
+        <FontImageSource Glyph="{x:Static font:FontAwesomeIcons.StickyNote}"
+                         FontFamily="{x:StaticResource FontAwesomeSolid}"/>
+    </NavigationPage.TitleIconImageSource>
     
     <ContentPage.Content>
         <StackLayout Padding="20">
